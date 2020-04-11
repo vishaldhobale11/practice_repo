@@ -1,0 +1,36 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+   - name: epel install
+     shell: amazon-linux-extras install epel -y
+     
+   - name: Java install  
+     yum:
+      name: java-1.8.0 
+      state: present
+   
+   - name: Git install
+     yum:
+      name: git
+      state: present
+
+   - name: tomcat install
+     shell: amazon-linux-extras install tomcat8.5 -y
+
+   - name: Cloning Git
+     git:
+      repo: https://github.com/vishaldhobale11/spring3hibernate.git
+      dest: /tmp
+      clone: yes
+ 
+   - name: Copy App into webapps
+     copy:
+      remote_src: true
+      src: /tmp/spring3hibernate/target/Spring3HibernateApp.war
+      dest: /usr/share/tomcat/webapps/
+ 
+   - name: start tomcat
+     service:
+      name: tomcat
+      state: started
