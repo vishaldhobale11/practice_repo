@@ -15,8 +15,20 @@
       name: git
       state: present
 
-   - name: tomcat install
-     shell: amazon-linux-extras install tomcat8.5 -y
+   - name: DOWNLOAD TOMCAT
+     uri:
+      url: http://apachemirror.wuchna.com/tomcat/tomcat-9/v9.0.31/bin/apache-tomcat-9.0.31.tar.gz
+      dest: /opt/
+
+   - name: EXTRACTION
+     unarchive:
+        src: /opt/apache-tomcat-9.0.31.tar.gz
+        dest: /opt/
+        remote_src: yes
+
+   - name: Start tomcat
+     shell: /opt/apache-tomcat-9.0.31/bin/startup.sh 
+
 
    - name: Cloning Git
      git:
@@ -28,7 +40,7 @@
      copy:
       remote_src: true
       src: /ops/target/Spring3HibernateApp.war
-      dest: /usr/share/tomcat/webapps/
+      dest: /opt/apache-tomcat-9.0.31/webapps/
  
    - name: start tomcat
      service:
