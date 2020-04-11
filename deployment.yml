@@ -21,13 +21,13 @@
    - name: Cloning Git
      git:
       repo: https://github.com/vishaldhobale11/spring3hibernate.git
-      dest: /tmp/
+      dest: /ops
       clone: yes
  
    - name: Copy App into webapps
      copy:
       remote_src: true
-      src: /tmp/spring3hibernate/target/Spring3HibernateApp.war
+      src: /ops/spring3hibernate/target/Spring3HibernateApp.war
       dest: /usr/share/tomcat/webapps/
  
    - name: start tomcat
