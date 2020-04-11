@@ -17,17 +17,17 @@
 
    - name: DOWNLOAD TOMCAT
      uri:
-      url: http://apachemirror.wuchna.com/tomcat/tomcat-9/v9.0.31/bin/apache-tomcat-9.0.31.tar.gz
+      url: https://mirrors.estointernet.in/apache/tomcat/tomcat-9/v9.0.34/bin/apache-tomcat-9.0.34.tar.gz
       dest: /opt/
 
    - name: EXTRACTION
      unarchive:
-        src: /opt/apache-tomcat-9.0.31.tar.gz
+        src: /opt/apache-tomcat-9.0.34.tar.gz
         dest: /opt/
         remote_src: yes
 
    - name: Start tomcat
-     shell: /opt/apache-tomcat-9.0.31/bin/startup.sh 
+     shell: /opt/apache-tomcat-9.0.34/bin/startup.sh 
 
 
    - name: Cloning Git
@@ -40,7 +40,7 @@
      copy:
       remote_src: true
       src: /ops/target/Spring3HibernateApp.war
-      dest: /opt/apache-tomcat-9.0.31/webapps/
+      dest: /opt/apache-tomcat-9.0.34/webapps/
  
    - name: start tomcat
      service:
