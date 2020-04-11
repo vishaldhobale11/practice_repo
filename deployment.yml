@@ -21,7 +21,7 @@
    - name: Cloning Git
      git:
       repo: https://github.com/vishaldhobale11/spring3hibernate.git
-      dest: /tmp
+      dest: /tmp/
       clone: yes
  
    - name: Copy App into webapps
