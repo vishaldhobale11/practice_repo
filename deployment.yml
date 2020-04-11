@@ -41,8 +41,3 @@
       remote_src: true
       src: /ops/target/Spring3HibernateApp.war
       dest: /opt/apache-tomcat-9.0.34/webapps/
- 
-   - name: start tomcat
-     service:
-      name: tomcat
-      state: started
